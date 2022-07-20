@@ -1,0 +1,4964 @@
+#  ___ _            _ _    _ _    __
+# / __(_)_ __  _ __| (_)__(_) |_ /_/
+# \__ \ | '  \| '_ \ | / _| |  _/ -_)
+# |___/_|_|_|_| .__/_|_\__|_|\__\___|
+#             |_| Module: Agd 0.0.1
+basePath: /api
+paths:
+  /rest/AgdAds:
+    get:
+      summary: Search AgdAds business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdads-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdAds'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: _crosstab
+        description: Apply pivot table
+        type: string
+        required: false
+        enum:
+        - AgdAds-TC1
+      - in: query
+        name: _crosstabcubes
+        description: Pivot table data as cubes?
+        type: boolean
+        required: false
+      - in: query
+        name: agdAdsId
+        description: Search filter for id ad
+        type: integer
+        required: false
+      - in: query
+        name: agdAdsTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: agdAdsBeginDate
+        description: Search filter for Begin date
+        type: string
+        required: false
+      - in: query
+        name: agdAdsDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: agdAdsTypetransaction
+        description: Search filter for Transaction type
+        type: string
+        required: false
+        enum:
+        - '1'
+        - '2'
+        - '3'
+      - in: query
+        name: agdAdsPrice
+        description: Search filter for Price
+        type: number
+        required: false
+      - in: query
+        name: agdAdsStatus
+        description: Search filter for Status
+        type: string
+        required: false
+        enum:
+        - BRO
+        - CRE
+        - MOD
+        - VAL
+        - ARC
+      - in: query
+        name: agdAdsPhoto
+        description: Search filter for Photo
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk
+        description: Search filter for Site
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__agdSitTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__agdSitAdress
+        description: Search filter for Adress
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__AgdSites_AgdCity_fk
+        description: Search filter for Site City
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__AgdSites_AgdCity_fk__agdCtyName
+        description: Search filter for City
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__AgdSites_AgdCity_fk__agdCtyZipcode
+        description: Search filter for Zipcode
+        type: string
+        required: false
+      - in: query
+        name: agdAdsRubId
+        description: Search filter for Rubric
+        type: string
+        required: false
+      - in: query
+        name: agdAdsRubId__agdRubId
+        description: Search filter for Rubric Id
+        type: integer
+        required: false
+      - in: query
+        name: agdAdsRubId__agdRubTitle
+        description: Search filter for Rubric
+        type: string
+        required: false
+      tags:
+      - AgdAds
+  /rest/AgdCity/{row_id}:
+    post:
+      summary: Create a new AgdCitybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcity-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdCity'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdCity'
+        in: body
+        name: body
+      tags:
+      - AgdCity
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdCity business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcity-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdCity'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdCity
+    delete:
+      summary: Delete a AgdCity business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcity-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdCity
+    put:
+      summary: Update a AgdCitybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcity-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdCity'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdCity'
+        in: body
+        name: body
+      tags:
+      - AgdCity
+      consumes:
+      - application/json
+  /rest/AgdPrfTag:
+    get:
+      summary: Search AgdPrfTag business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprftag-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdPrfTag'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdPrftagPrfId
+        description: Search filter for agd prftag prf id
+        type: string
+        required: false
+      - in: query
+        name: agdPrftagPrfId__usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      - in: query
+        name: agdPrftagTagId
+        description: Search filter for agd prftag tag id
+        type: string
+        required: false
+      - in: query
+        name: agdPrftagTagId__agdTagName
+        description: Search filter for agd prftag tag id Area of interest
+        type: string
+        required: false
+      tags:
+      - AgdPrfTag
+  /login:
+    get:
+      summary: Login (obtain bearer token)
+      security:
+      - basicAuth: []
+      produces:
+      - text/plain
+      - application/json
+      operationId: login
+      responses:
+        '200':
+          description: Successful login
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      parameters:
+      - in: query
+        name: _output
+        description: Optional output format
+        type: string
+        required: false
+        enum:
+        - json
+        - oauth2
+        - token
+      tags:
+      - session
+  /rest/AgdAdsHistoric/{row_id}:
+    post:
+      summary: Create a new AgdAdsHistoricbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdadshistoric-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdAdsHistoric'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdAdsHistoric'
+        in: body
+        name: body
+      tags:
+      - AgdAdsHistoric
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdAdsHistoric business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdadshistoric-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdAdsHistoric'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdAdsHistoric
+    delete:
+      summary: Delete a AgdAdsHistoric business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdadshistoric-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdAdsHistoric
+    put:
+      summary: Update a AgdAdsHistoricbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdadshistoric-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdAdsHistoric'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdAdsHistoric'
+        in: body
+        name: body
+      tags:
+      - AgdAdsHistoric
+      consumes:
+      - application/json
+  /rest/AgdRubrique:
+    get:
+      summary: Search AgdRubrique business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdrubrique-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdRubrique'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdRubId
+        description: Search filter for Id
+        type: integer
+        required: false
+      - in: query
+        name: agdRubTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: agdRubOrder
+        description: Search filter for Order
+        type: integer
+        required: false
+      - in: query
+        name: agdRubIcne
+        description: Search filter for Icon
+        type: string
+        required: false
+      tags:
+      - AgdRubrique
+  /rest/AgdPrfSit:
+    get:
+      summary: Search AgdPrfSit business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprfsit-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdPrfSit'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdPrfsitPrfId
+        description: Search filter for agd prfsit prf id
+        type: string
+        required: false
+      - in: query
+        name: agdPrfsitPrfId__usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      - in: query
+        name: agdPrfsitSitId
+        description: Search filter for agd prfsit sit id
+        type: string
+        required: false
+      - in: query
+        name: agdPrfsitSitId__agdSitTitle
+        description: Search filter for agd prfsit sit id Title
+        type: string
+        required: false
+      tags:
+      - AgdPrfSit
+  /rest/AgdCity:
+    get:
+      summary: Search AgdCity business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcity-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdCity'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: _indexsearch
+        description: Index search query
+        type: string
+        required: false
+      - in: query
+        name: agdCtyCityCode
+        description: Search filter for City code
+        type: string
+        required: false
+      - in: query
+        name: agdCtyName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: agdCtyZipcode
+        description: Search filter for Zipcode
+        type: string
+        required: false
+      - in: query
+        name: agdCtyCoordonnes
+        description: Search filter for GPS coordonnates
+        type: string
+        required: false
+      - in: query
+        name: agdCtyPopulation
+        description: Search filter for Population
+        type: string
+        required: false
+      tags:
+      - AgdCity
+  /rest/AgdCity/{row_id}/placemap:AgdCity-Map:
+    get:
+      summary: Call a place map for AgdCity business object
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcity-placemap-agdcity-map
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PlaceMapData'
+          description: Success in calling the place map adat
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdCity
+  /rest/AgdCLub/{row_id}:
+    post:
+      summary: Create a new AgdCLubbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclub-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdCLub'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdCLub'
+        in: body
+        name: body
+      tags:
+      - AgdCLub
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdCLub business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclub-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdCLub'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdCLub
+    delete:
+      summary: Delete a AgdCLub business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclub-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdCLub
+    put:
+      summary: Update a AgdCLubbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclub-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdCLub'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdCLub'
+        in: body
+        name: body
+      tags:
+      - AgdCLub
+      consumes:
+      - application/json
+  /rest/AgdCty:
+    get:
+      summary: Search AgdCty business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcty-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdCty'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      tags:
+      - AgdCty
+  /rest/AgdGoodDeals/{row_id}:
+    post:
+      summary: Create a new AgdGoodDealsbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdgooddeals-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdGoodDeals'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdGoodDeals'
+        in: body
+        name: body
+      tags:
+      - AgdGoodDeals
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdGoodDeals business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdgooddeals-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdGoodDeals'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdGoodDeals
+    delete:
+      summary: Delete a AgdGoodDeals business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdgooddeals-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdGoodDeals
+    put:
+      summary: Update a AgdGoodDealsbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdgooddeals-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdGoodDeals'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdGoodDeals'
+        in: body
+        name: body
+      tags:
+      - AgdGoodDeals
+      consumes:
+      - application/json
+  /rest/AgdNews/{row_id}:
+    post:
+      summary: Create a new AgdNewsbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnews-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdNews'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdNews'
+        in: body
+        name: body
+      tags:
+      - AgdNews
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdNews business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnews-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdNews'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdNews
+    delete:
+      summary: Delete a AgdNews business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnews-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdNews
+    put:
+      summary: Update a AgdNewsbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnews-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdNews'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdNews'
+        in: body
+        name: body
+      tags:
+      - AgdNews
+      consumes:
+      - application/json
+  /rest/AgdAds/{row_id}/action:AGD_EXPIRE:
+    get:
+      summary: Call a custom action for a AgdAds business object record or for all
+        records
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdads-action-agd_expire
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ActionResult'
+          description: Success in calling the custom action
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdAds
+  /rest/AgdRubrique/{row_id}:
+    post:
+      summary: Create a new AgdRubriquebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdrubrique-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdRubrique'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdRubrique'
+        in: body
+        name: body
+      tags:
+      - AgdRubrique
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdRubrique business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdrubrique-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdRubrique'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdRubrique
+    delete:
+      summary: Delete a AgdRubrique business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdrubrique-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdRubrique
+    put:
+      summary: Update a AgdRubriquebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdrubrique-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdRubrique'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdRubrique'
+        in: body
+        name: body
+      tags:
+      - AgdRubrique
+      consumes:
+      - application/json
+  /rest/AgdAds/{row_id}:
+    post:
+      summary: Create a new AgdAdsbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdads-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdAds'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdAds'
+        in: body
+        name: body
+      tags:
+      - AgdAds
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdAds business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdads-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdAds'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdAds
+    delete:
+      summary: Delete a AgdAds business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdads-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdAds
+    put:
+      summary: Update a AgdAdsbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdads-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdAds'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdAds'
+        in: body
+        name: body
+      tags:
+      - AgdAds
+      consumes:
+      - application/json
+  /rest/AgdPrfSit/{row_id}:
+    post:
+      summary: Create a new AgdPrfSitbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprfsit-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdPrfSit'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdPrfSit'
+        in: body
+        name: body
+      tags:
+      - AgdPrfSit
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdPrfSit business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprfsit-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdPrfSit'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdPrfSit
+    delete:
+      summary: Delete a AgdPrfSit business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprfsit-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdPrfSit
+    put:
+      summary: Update a AgdPrfSitbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprfsit-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdPrfSit'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdPrfSit'
+        in: body
+        name: body
+      tags:
+      - AgdPrfSit
+      consumes:
+      - application/json
+  /rest/AgdNewsTag/{row_id}:
+    post:
+      summary: Create a new AgdNewsTagbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnewstag-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdNewsTag'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdNewsTag'
+        in: body
+        name: body
+      tags:
+      - AgdNewsTag
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdNewsTag business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnewstag-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdNewsTag'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdNewsTag
+    delete:
+      summary: Delete a AgdNewsTag business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnewstag-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdNewsTag
+    put:
+      summary: Update a AgdNewsTagbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnewstag-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdNewsTag'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdNewsTag'
+        in: body
+        name: body
+      tags:
+      - AgdNewsTag
+      consumes:
+      - application/json
+  /rest/AgdTag:
+    get:
+      summary: Search AgdTag business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdtag-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdTag'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdTagName
+        description: Search filter for Area of interest
+        type: string
+        required: false
+      - in: query
+        name: agdTagActive
+        description: Search filter for Active
+        type: boolean
+        required: false
+      - in: query
+        name: agdTagIcne
+        description: Search filter for Icon
+        type: string
+        required: false
+      tags:
+      - AgdTag
+  /rest/AgdSites/{row_id}:
+    post:
+      summary: Create a new AgdSitesbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdsites-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdSites'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdSites'
+        in: body
+        name: body
+      tags:
+      - AgdSites
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdSites business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdsites-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdSites'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdSites
+    delete:
+      summary: Delete a AgdSites business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdsites-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdSites
+    put:
+      summary: Update a AgdSitesbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdsites-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdSites'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdSites'
+        in: body
+        name: body
+      tags:
+      - AgdSites
+      consumes:
+      - application/json
+  /rest/AgdCLub:
+    get:
+      summary: Search AgdCLub business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclub-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdCLub'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdClubPhotomini
+        description: Search filter for Photo
+        type: string
+        required: false
+      - in: query
+        name: agdClubTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: agdClubDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: agdClubSiteweb
+        description: Search filter for Website
+        type: string
+        required: false
+      - in: query
+        name: agdClubAdress
+        description: Search filter for Adress
+        type: string
+        required: false
+      - in: query
+        name: agdClubCoordonnes
+        description: Search filter for GPS coordinates
+        type: string
+        required: false
+      - in: query
+        name: agdClubPhotoplandaccs
+        description: Search filter for Photo access map
+        type: string
+        required: false
+      - in: query
+        name: agdClubSched1
+        description: Search filter for From
+        type: string
+        required: false
+      - in: query
+        name: agdClubSched2
+        description: Search filter for to
+        type: string
+        required: false
+      - in: query
+        name: agdClubPriodicit
+        description: Search filter for Periodicity
+        type: string
+        required: false
+      - in: query
+        name: agdClubPriodedinscription
+        description: Search filter for Registration period
+        type: string
+        required: false
+      - in: query
+        name: agdClubContactEmail
+        description: Search filter for Email contact
+        type: string
+        required: false
+      - in: query
+        name: agdClubState
+        description: Search filter for State
+        type: string
+        required: false
+      - in: query
+        name: agdClubBPhoto
+        description: Search filter for Large photo
+        type: string
+        required: false
+      - in: query
+        name: agdClubId
+        description: Search filter for club id
+        type: integer
+        required: false
+      - in: query
+        name: agdClubPrfId
+        description: Search filter for Profile|Profiles
+        type: string
+        required: false
+      - in: query
+        name: agdClubPrfId__usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      - in: query
+        name: agdClubPrfId__usr_first_name
+        description: Search filter for First name
+        type: string
+        required: false
+      - in: query
+        name: agdClubPrfId__usr_last_name
+        description: Search filter for Last name
+        type: string
+        required: false
+      tags:
+      - AgdCLub
+  /rest/AgdNews:
+    get:
+      summary: Search AgdNews business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnews-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdNews'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdNewsId
+        description: Search filter for News id
+        type: integer
+        required: false
+      - in: query
+        name: agdNewsTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: agdNewsDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: agdNewsPhoto
+        description: Search filter for Photo
+        type: string
+        required: false
+      - in: query
+        name: agdNewsDatededbut
+        description: Search filter for Publication start date
+        type: string
+        required: false
+      - in: query
+        name: agdNewsDatedefin
+        description: Search filter for Publication end date
+        type: string
+        required: false
+      - in: query
+        name: agdNewsState
+        description: Search filter for State
+        type: string
+        required: false
+      - in: query
+        name: agdNewsDatesethoraires
+        description: Search filter for Dates and times
+        type: string
+        required: false
+      - in: query
+        name: agdNewsClubId
+        description: Search filter for Club
+        type: string
+        required: false
+      - in: query
+        name: agdNewsClubId__agdClubId
+        description: Search filter for Club club id
+        type: integer
+        required: false
+      - in: query
+        name: agdNewsClubId__agdClubTitle
+        description: Search filter for Club
+        type: string
+        required: false
+      - in: query
+        name: agdNewsClubId__agdClubDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: agdNewsSitId
+        description: Search filter for Site|Sites
+        type: string
+        required: false
+      - in: query
+        name: agdNewsSitId__agdSitTitle
+        description: Search filter for Site
+        type: string
+        required: false
+      - in: query
+        name: agdNewsSitId__AgdSites_AgdCity_fk
+        description: Search filter for Site|Sites City
+        type: string
+        required: false
+      - in: query
+        name: agdNewsSitId__AgdSites_AgdCity_fk__agdCtyName
+        description: Search filter for City
+        type: string
+        required: false
+      - in: query
+        name: agdNewsSitId__AgdSites_AgdCity_fk__agdCtyZipcode
+        description: Search filter for Zipcode
+        type: string
+        required: false
+      tags:
+      - AgdNews
+  /rest/AgdProfil:
+    get:
+      summary: Search AgdProfil business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprofil-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdProfil'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdPrfLastLogon
+        description: Search filter for Last logon
+        type: string
+        required: false
+      - in: query
+        name: usr_image_id
+        description: Search filter for Picture
+        type: string
+        required: false
+      - in: query
+        name: agdPrfValidation
+        description: Search filter for CGU Validation
+        type: boolean
+        required: false
+      - in: query
+        name: usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      - in: query
+        name: usr_first_name
+        description: Search filter for First name
+        type: string
+        required: false
+      - in: query
+        name: usr_last_name
+        description: Search filter for Last name
+        type: string
+        required: false
+      - in: query
+        name: usr_lang
+        description: Search filter for Language
+        type: string
+        required: false
+        enum:
+        - ENU
+        - FRA
+      - in: query
+        name: usr_email
+        description: Search filter for Email address
+        type: string
+        required: false
+      - in: query
+        name: usr_cell_num
+        description: Search filter for Mobile/cellular phone number
+        type: string
+        required: false
+      - in: query
+        name: usr_active
+        description: Search filter for Active
+        type: string
+        required: false
+        enum:
+        - '0'
+        - '1'
+        - '2'
+        - '3'
+      - in: query
+        name: agdPrfSitId
+        description: Search filter for Agd sites
+        type: string
+        required: false
+      - in: query
+        name: usr_home_id
+        description: Search filter for Home page
+        type: string
+        required: false
+      - in: query
+        name: agdPrfSitId__agdSitTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: usr_home_id__viw_name
+        description: Search filter for Home page Name
+        type: string
+        required: false
+      - in: query
+        name: agdPrfSitId__AgdSites_AgdCity_fk__agdCtyName
+        description: Search filter for City
+        type: string
+        required: false
+      - in: query
+        name: agdPrfSitId__AgdSites_AgdCity_fk__agdCtyZipcode
+        description: Search filter for Zipcode
+        type: string
+        required: false
+      - in: query
+        name: agdPrfSitId__AgdSites_AgdCity_fk
+        description: Search filter for Agd sites City
+        type: string
+        required: false
+      - in: query
+        name: agdPrfType
+        description: Search filter for Type
+        type: string
+        required: false
+        enum:
+        - ADMIN
+        - USER
+      - in: query
+        name: row_module_id
+        description: Search filter for Module
+        type: string
+        required: false
+      - in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Module name
+        type: string
+        required: false
+      tags:
+      - AgdProfil
+  /logout:
+    get:
+      summary: Logout (revoke bearer token)
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: logout
+      responses:
+        '200':
+          description: Successfull logout
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      tags:
+      - session
+  /rest/AgdParamSys/{row_id}:
+    post:
+      summary: Create a new AgdParamSysbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdparamsys-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdParamSys'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdParamSys'
+        in: body
+        name: body
+      tags:
+      - AgdParamSys
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdParamSys business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdparamsys-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdParamSys'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdParamSys
+    delete:
+      summary: Delete a AgdParamSys business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdparamsys-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdParamSys
+    put:
+      summary: Update a AgdParamSysbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdparamsys-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdParamSys'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdParamSys'
+        in: body
+        name: body
+      tags:
+      - AgdParamSys
+      consumes:
+      - application/json
+  /rest/AgdClubTag/{row_id}:
+    post:
+      summary: Create a new AgdClubTagbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclubtag-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdClubTag'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdClubTag'
+        in: body
+        name: body
+      tags:
+      - AgdClubTag
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdClubTag business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclubtag-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdClubTag'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdClubTag
+    delete:
+      summary: Delete a AgdClubTag business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclubtag-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdClubTag
+    put:
+      summary: Update a AgdClubTagbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclubtag-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdClubTag'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdClubTag'
+        in: body
+        name: body
+      tags:
+      - AgdClubTag
+      consumes:
+      - application/json
+  /rest/AgdAdsHistoric:
+    get:
+      summary: Search AgdAdsHistoric business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdadshistoric-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdAdsHistoric'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: row_ref_id
+        description: Search filter for Record row ID
+        type: string
+        required: false
+      - in: query
+        name: row_idx
+        description: Search filter for History record index
+        type: integer
+        required: false
+      - in: query
+        name: created_by_hist
+        description: Search filter for Created by
+        type: string
+        required: false
+      - in: query
+        name: created_dt_hist
+        description: Search filter for Created date
+        type: string
+        required: false
+      - in: query
+        name: agdAdsId
+        description: Search filter for id ad
+        type: integer
+        required: false
+      - in: query
+        name: agdAdsTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: agdAdsBeginDate
+        description: Search filter for Begin date
+        type: string
+        required: false
+      - in: query
+        name: agdAdsDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: agdAdsTypetransaction
+        description: Search filter for Transaction type
+        type: string
+        required: false
+        enum:
+        - '1'
+        - '2'
+        - '3'
+      - in: query
+        name: agdAdsPrice
+        description: Search filter for Price
+        type: number
+        required: false
+      - in: query
+        name: agdAdsStatus
+        description: Search filter for Status
+        type: string
+        required: false
+        enum:
+        - BRO
+        - CRE
+        - MOD
+        - VAL
+        - ARC
+      - in: query
+        name: agdAdsPhoto
+        description: Search filter for Photo
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk
+        description: Search filter for Site
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__agdSitTitle
+        description: Search filter for Site Title
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__agdSitAdress
+        description: Search filter for Site Adress
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__AgdSites_AgdCity_fk
+        description: Search filter for Site City
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__AgdSites_AgdCity_fk__agdCtyName
+        description: Search filter for Site City Name
+        type: string
+        required: false
+      - in: query
+        name: AgdAds_AgdSites_fk__AgdSites_AgdCity_fk__agdCtyZipcode
+        description: Search filter for Site City Zipcode
+        type: string
+        required: false
+      - in: query
+        name: agdAdsRubId
+        description: Search filter for Rubric
+        type: string
+        required: false
+      - in: query
+        name: agdAdsRubId__agdRubId
+        description: Search filter for Rubric Id
+        type: integer
+        required: false
+      - in: query
+        name: agdAdsRubId__agdRubTitle
+        description: Search filter for Rubric Title
+        type: string
+        required: false
+      tags:
+      - AgdAdsHistoric
+  /rest/AgdParamSys:
+    get:
+      summary: Search AgdParamSys business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdparamsys-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdParamSys'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: sys_code
+        description: Search filter for Code
+        type: string
+        required: false
+      - in: query
+        name: sys_value
+        description: Search filter for Value
+        type: string
+        required: false
+      - in: query
+        name: sys_value2
+        description: Search filter for Overridden value
+        type: string
+        required: false
+      - in: query
+        name: sys_type
+        description: Search filter for Type
+        type: string
+        required: false
+        enum:
+        - APP
+        - LFL
+        - LOG
+        - EMO
+        - PRV
+      - in: query
+        name: sys_desc
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: row_module_id
+        description: Search filter for Module
+        type: string
+        required: false
+      - in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Module name
+        type: string
+        required: false
+      tags:
+      - AgdParamSys
+  /rest/AgdSites:
+    get:
+      summary: Search AgdSites business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdsites-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdSites'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdSitPhoto
+        description: Search filter for Photo
+        type: string
+        required: false
+      - in: query
+        name: agdSitTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: agdSitOtherTitle
+        description: Search filter for Alternate title
+        type: string
+        required: false
+      - in: query
+        name: agdSitAdress
+        description: Search filter for Adress
+        type: string
+        required: false
+      - in: query
+        name: AgdSites_AgdCity_fk
+        description: Search filter for City
+        type: string
+        required: false
+      - in: query
+        name: AgdSites_AgdCity_fk__agdCtyCityCode
+        description: Search filter for City City code
+        type: string
+        required: false
+      - in: query
+        name: AgdSites_AgdCity_fk__agdCtyName
+        description: Search filter for City Name
+        type: string
+        required: false
+      - in: query
+        name: AgdSites_AgdCity_fk__agdCtyZipcode
+        description: Search filter for City Zipcode
+        type: string
+        required: false
+      tags:
+      - AgdSites
+  /rest/AgdPrfTag/{row_id}:
+    post:
+      summary: Create a new AgdPrfTagbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprftag-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdPrfTag'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdPrfTag'
+        in: body
+        name: body
+      tags:
+      - AgdPrfTag
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdPrfTag business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprftag-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdPrfTag'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdPrfTag
+    delete:
+      summary: Delete a AgdPrfTag business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprftag-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdPrfTag
+    put:
+      summary: Update a AgdPrfTagbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprftag-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdPrfTag'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdPrfTag'
+        in: body
+        name: body
+      tags:
+      - AgdPrfTag
+      consumes:
+      - application/json
+  /rest/AgdNewsTag:
+    get:
+      summary: Search AgdNewsTag business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdnewstag-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdNewsTag'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdNewstagNewsId
+        description: Search filter for agd newstag news id
+        type: string
+        required: false
+      - in: query
+        name: agdNewstagNewsId__agdNewsTitle
+        description: Search filter for agd newstag news id Title
+        type: string
+        required: false
+      - in: query
+        name: agdNewstagNewsId__agdNewsId
+        description: Search filter for agd newstag news id News id
+        type: integer
+        required: false
+      - in: query
+        name: agdNewstagTagId
+        description: Search filter for agd newstag tag id
+        type: string
+        required: false
+      - in: query
+        name: agdNewstagTagId__agdTagName
+        description: Search filter for agd newstag tag id Area of interest
+        type: string
+        required: false
+      tags:
+      - AgdNewsTag
+  /:
+    get:
+      summary: Get user session information
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: info
+      responses:
+        '200':
+          description: Success in getting user session information
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      parameters:
+      - in: query
+        name: texts
+        description: Texts?
+        type: boolean
+        required: false
+      tags:
+      - session
+  /rest/AgdProfil/{row_id}:
+    post:
+      summary: Create a new AgdProfilbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprofil-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdProfil'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdProfil'
+        in: body
+        name: body
+      tags:
+      - AgdProfil
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdProfil business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprofil-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdProfil'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdProfil
+    delete:
+      summary: Delete a AgdProfil business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprofil-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdProfil
+    put:
+      summary: Update a AgdProfilbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdprofil-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdProfil'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdProfil'
+        in: body
+        name: body
+      tags:
+      - AgdProfil
+      consumes:
+      - application/json
+  /rest/AgdCty/{row_id}:
+    post:
+      summary: Create a new AgdCtybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcty-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdCty'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdCty'
+        in: body
+        name: body
+      tags:
+      - AgdCty
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdCty business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcty-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdCty'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdCty
+    delete:
+      summary: Delete a AgdCty business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcty-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdCty
+    put:
+      summary: Update a AgdCtybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdcty-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdCty'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdCty'
+        in: body
+        name: body
+      tags:
+      - AgdCty
+      consumes:
+      - application/json
+  /rest/AgdGoodDeals:
+    get:
+      summary: Search AgdGoodDeals business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdgooddeals-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdGoodDeals'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdGdTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: agdGdTheme
+        description: Search filter for Theme
+        type: string
+        required: false
+      - in: query
+        name: agdGdLien
+        description: Search filter for Link
+        type: string
+        required: false
+      - in: query
+        name: agdGdOrder
+        description: Search filter for Order
+        type: integer
+        required: false
+      - in: query
+        name: agdGdSitId
+        description: Search filter for Site|Sites
+        type: string
+        required: false
+      - in: query
+        name: agdGdSitId__agdSitTitle
+        description: Search filter for Site
+        type: string
+        required: false
+      tags:
+      - AgdGoodDeals
+  /rest/AgdClubTag:
+    get:
+      summary: Search AgdClubTag business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdclubtag-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfAgdClubTag'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: agdClubtagClubId
+        description: Search filter for agd clubtag club id
+        type: string
+        required: false
+      - in: query
+        name: agdClubtagClubId__agdClubId
+        description: Search filter for agd clubtag club id club id
+        type: integer
+        required: false
+      - in: query
+        name: agdClubtagClubId__agdClubTitle
+        description: Search filter for agd clubtag club id Title
+        type: string
+        required: false
+      - in: query
+        name: agdClubtagTagId
+        description: Search filter for agd clubtag tag id
+        type: string
+        required: false
+      - in: query
+        name: agdClubtagTagId__agdTagName
+        description: Search filter for agd clubtag tag id Area of interest
+        type: string
+        required: false
+      tags:
+      - AgdClubTag
+  /rest/AgdTag/{row_id}:
+    post:
+      summary: Create a new AgdTagbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdtag-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdTag'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdTag'
+        in: body
+        name: body
+      tags:
+      - AgdTag
+      consumes:
+      - application/json
+    get:
+      summary: Get a AgdTag business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdtag-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdTag'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - AgdTag
+    delete:
+      summary: Delete a AgdTag business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdtag-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - AgdTag
+    put:
+      summary: Update a AgdTagbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-agdtag-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/AgdTag'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/AgdTag'
+        in: body
+        name: body
+      tags:
+      - AgdTag
+      consumes:
+      - application/json
+host: nse.demo.simplicite.io
+schemes:
+- https
+securityDefinitions:
+  basicAuth:
+    type: basic
+  bearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+definitions:
+  Error404:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 404
+  ArrayOfAgdAds:
+    type: array
+    items:
+      $ref: '#/definitions/AgdAds'
+  AgdClubTag:
+    type: object
+    properties:
+      agdClubtagTagId__agdTagName:
+        description: agd clubtag tag id Area of interest
+        type: string
+      agdClubtagClubId:
+        description: agd clubtag club id
+        type: string
+      agdClubtagClubId__agdClubId:
+        description: agd clubtag club id club id
+        type: integer
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdClubtagClubId__agdClubTitle:
+        description: agd clubtag club id Title
+        type: string
+      agdClubtagTagId:
+        description: agd clubtag tag id
+        type: string
+  PublicationResult:
+    type: object
+    properties:
+      mime:
+        description: MIME type
+        type: string
+      content:
+        description: Content (plain text or base64 encoded)
+        type: string
+  PlaceData:
+    type: object
+    properties:
+      coord:
+        description: Geographical coordinates
+        type: string
+      address:
+        description: Address
+        type: string
+      row_id:
+        description: Row ID
+        type: string
+      label1:
+        description: 'Label #1'
+        type: string
+      label2:
+        description: 'Label #2'
+        type: string
+      label3:
+        description: 'Label #3'
+        type: string
+  AgdCLub:
+    type: object
+    properties:
+      agdClubSiteweb:
+        description: Website
+        type: string
+      agdClubPriodedinscription:
+        description: Registration period
+        type: string
+      agdClubCoordonnes:
+        description: GPS coordinates
+        type: string
+        example: latitude;longitude
+      agdClubPrfId__usr_first_name:
+        description: First name
+        type: string
+      agdClubPriodicit:
+        description: Periodicity
+        type: string
+      agdClubSched1:
+        description: From
+        type: string
+        example: HH:mm:ss
+      agdClubDescription:
+        description: Description
+        type: string
+      agdClubSched2:
+        description: to
+        type: string
+        example: HH:mm:ss
+      agdClubAdress:
+        description: Adress
+        type: string
+      agdClubPhotomini:
+        description: Photo
+        type: object
+      agdClubTitle:
+        description: Title
+        type: string
+      agdClubContactEmail:
+        description: Email contact
+        type: string
+      agdClubBPhoto:
+        description: Large photo
+        type: string
+      agdClubPhotoplandaccs:
+        description: Photo access map
+        type: string
+      agdClubPrfId:
+        description: Profile|Profiles
+        type: string
+      agdClubState:
+        description: State
+        type: string
+      agdClubPrfId__usr_login:
+        description: Login
+        type: string
+      agdClubPrfId__usr_last_name:
+        description: Last name
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdClubId:
+        description: club id
+        type: integer
+  PlaceMapData:
+    type: object
+    properties:
+      places:
+        description: Places
+        type: array
+        items:
+          $ref: '#/definitions/PlaceData'
+      name:
+        description: Name
+        type: string
+  AgdNews:
+    type: object
+    properties:
+      agdNewsDescription:
+        description: Description
+        type: string
+      agdNewsClubId:
+        description: Club
+        type: string
+      agdNewsClubId__agdClubTitle:
+        description: Club
+        type: string
+      agdNewsSitId__agdSitTitle:
+        description: Site
+        type: string
+      agdNewsPhoto:
+        description: Photo
+        type: object
+      agdNewsSitId__AgdSites_AgdCity_fk__agdCtyName:
+        description: City
+        type: string
+      agdNewsTitle:
+        description: Title
+        type: string
+      agdNewsClubId__agdClubDescription:
+        description: Description
+        type: string
+      agdNewsDatedefin:
+        description: Publication end date
+        type: string
+        example: yyyy-MM-dd
+      agdNewsDatesethoraires:
+        description: Dates and times
+        type: string
+      agdNewsSitId:
+        description: Site|Sites
+        type: string
+      agdNewsDatededbut:
+        description: Publication start date
+        type: string
+        example: yyyy-MM-dd
+      agdNewsClubId__agdClubId:
+        description: Club club id
+        type: integer
+      agdNewsSitId__AgdSites_AgdCity_fk:
+        description: Site|Sites City
+        type: string
+      agdNewsId:
+        description: News id
+        type: integer
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdNewsSitId__AgdSites_AgdCity_fk__agdCtyZipcode:
+        description: Zipcode
+        type: string
+      agdNewsState:
+        description: State
+        type: string
+  ArrayOfAgdProfil:
+    type: array
+    items:
+      $ref: '#/definitions/AgdProfil'
+  ArrayOfAgdParamSys:
+    type: array
+    items:
+      $ref: '#/definitions/AgdParamSys'
+  AgdTag:
+    type: object
+    properties:
+      agdTagActive:
+        description: Active
+        type: boolean
+      agdTagName:
+        description: Area of interest
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdTagIcne:
+        description: Icon
+        type: object
+  Error400:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 400
+  AgdProfil:
+    type: object
+    properties:
+      row_module_id__mdl_name:
+        description: Module name
+        type: string
+      usr_image_id:
+        description: Picture
+        type: object
+      usr_email:
+        description: Email address
+        type: string
+      usr_active:
+        description: Active
+        type: string
+        enum:
+        - '0'
+        - '1'
+        - '2'
+        - '3'
+      row_module_id:
+        description: Module
+        type: string
+      usr_login:
+        description: Login
+        type: string
+      agdPrfValidation:
+        description: CGU Validation
+        type: boolean
+      usr_home_id__viw_name:
+        description: Home page Name
+        type: string
+      agdPrfSitId__AgdSites_AgdCity_fk__agdCtyZipcode:
+        description: Zipcode
+        type: string
+      usr_last_name:
+        description: Last name
+        type: string
+      usr_cell_num:
+        description: Mobile/cellular phone number
+        type: string
+      usr_lang:
+        description: Language
+        type: string
+        enum:
+        - ENU
+        - FRA
+      agdPrfType:
+        description: Type
+        type: string
+        enum:
+        - ADMIN
+        - USER
+      agdPrfSitId__AgdSites_AgdCity_fk:
+        description: Agd sites City
+        type: string
+      agdPrfLastLogon:
+        description: Last logon
+        type: string
+        example: yyyy-MM-dd HH:mm:ss
+      agdPrfSitId:
+        description: Agd sites
+        type: string
+      agdPrfSitId__agdSitTitle:
+        description: Title
+        type: string
+      agdPrfSitId__AgdSites_AgdCity_fk__agdCtyName:
+        description: City
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      usr_home_id:
+        description: Home page
+        type: string
+      usr_first_name:
+        description: First name
+        type: string
+  Error401:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 401
+  Error500:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 500
+  AgdGoodDeals:
+    type: object
+    properties:
+      agdGdLien:
+        description: Link
+        type: string
+      agdGdSitId__agdSitTitle:
+        description: Site
+        type: string
+      agdGdSitId:
+        description: Site|Sites
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdGdOrder:
+        description: Order
+        type: integer
+      agdGdTitle:
+        description: Title
+        type: string
+      agdGdTheme:
+        description: Theme
+        type: string
+  Error403:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 403
+  ArrayOfAgdSites:
+    type: array
+    items:
+      $ref: '#/definitions/AgdSites'
+  ArrayOfAgdRubrique:
+    type: array
+    items:
+      $ref: '#/definitions/AgdRubrique'
+  ArrayOfAgdNewsTag:
+    type: array
+    items:
+      $ref: '#/definitions/AgdNewsTag'
+  ArrayOfAgdAdsHistoric:
+    type: array
+    items:
+      $ref: '#/definitions/AgdAdsHistoric'
+  ArrayOfAgdCity:
+    type: array
+    items:
+      $ref: '#/definitions/AgdCity'
+  ArrayOfAgdGoodDeals:
+    type: array
+    items:
+      $ref: '#/definitions/AgdGoodDeals'
+  AgdNewsTag:
+    type: object
+    properties:
+      agdNewstagNewsId:
+        description: agd newstag news id
+        type: string
+      agdNewstagTagId:
+        description: agd newstag tag id
+        type: string
+      agdNewstagNewsId__agdNewsTitle:
+        description: agd newstag news id Title
+        type: string
+      agdNewstagNewsId__agdNewsId:
+        description: agd newstag news id News id
+        type: integer
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdNewstagTagId__agdTagName:
+        description: agd newstag tag id Area of interest
+        type: string
+  AgdRubrique:
+    type: object
+    properties:
+      agdRubTitle:
+        description: Title
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdRubIcne:
+        description: Icon
+        type: object
+      agdRubId:
+        description: Id
+        type: integer
+      agdRubOrder:
+        description: Order
+        type: integer
+  ArrayOfAgdTag:
+    type: array
+    items:
+      $ref: '#/definitions/AgdTag'
+  AgdCty:
+    type: object
+    properties:
+      row_id:
+        description: Unique technical row ID
+        type: string
+  AgdCity:
+    type: object
+    properties:
+      agdCtyZipcode:
+        description: Zipcode
+        type: string
+      agdCtyCoordonnes:
+        description: GPS coordonnates
+        type: string
+        example: latitude;longitude
+      agdCtyPopulation:
+        description: Population
+        type: string
+      agdCtyName:
+        description: Name
+        type: string
+      agdCtyCityCode:
+        description: City code
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  AgdAdsHistoric:
+    type: object
+    properties:
+      agdAdsPhoto:
+        description: Photo
+        type: object
+      AgdAds_AgdSites_fk__agdSitAdress:
+        description: Site Adress
+        type: string
+      agdAdsDescription:
+        description: Description
+        type: string
+      AgdAds_AgdSites_fk__AgdSites_AgdCity_fk__agdCtyName:
+        description: Site City Name
+        type: string
+      agdAdsRubId__agdRubTitle:
+        description: Rubric Title
+        type: string
+      agdAdsRubId:
+        description: Rubric
+        type: string
+      created_dt_hist:
+        description: Created date
+        type: string
+        example: yyyy-MM-dd HH:mm:ss
+      AgdAds_AgdSites_fk__agdSitTitle:
+        description: Site Title
+        type: string
+      row_ref_id:
+        description: Record row ID
+        type: string
+      agdAdsBeginDate:
+        description: Begin date
+        type: string
+        example: yyyy-MM-dd
+      AgdAds_AgdSites_fk__AgdSites_AgdCity_fk:
+        description: Site City
+        type: string
+      row_idx:
+        description: History record index
+        type: integer
+      agdAdsPrice:
+        description: Price
+        type: number
+      agdAdsRubId__agdRubId:
+        description: Rubric Id
+        type: integer
+      agdAdsId:
+        description: id ad
+        type: integer
+      AgdAds_AgdSites_fk:
+        description: Site
+        type: string
+      AgdAds_AgdSites_fk__AgdSites_AgdCity_fk__agdCtyZipcode:
+        description: Site City Zipcode
+        type: string
+      agdAdsTypetransaction:
+        description: Transaction type
+        type: string
+        enum:
+        - '1'
+        - '2'
+        - '3'
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdAdsStatus:
+        description: Status
+        type: string
+        enum:
+        - BRO
+        - CRE
+        - MOD
+        - VAL
+        - ARC
+      created_by_hist:
+        description: Created by
+        type: string
+      agdAdsTitle:
+        description: Title
+        type: string
+  ArrayOfAgdPrfTag:
+    type: array
+    items:
+      $ref: '#/definitions/AgdPrfTag'
+  ActionResult:
+    type: object
+    properties:
+      result:
+        description: Action result
+        type: string
+  ArrayOfAgdClubTag:
+    type: array
+    items:
+      $ref: '#/definitions/AgdClubTag'
+  TreeviewData:
+    type: object
+    properties:
+      item:
+        description: Object item with lists of linked objects' items
+        type: object
+  AgdAds:
+    type: object
+    properties:
+      agdAdsPhoto:
+        description: Photo
+        type: object
+      AgdAds_AgdSites_fk__agdSitAdress:
+        description: Adress
+        type: string
+      agdAdsDescription:
+        description: Description
+        type: string
+      AgdAds_AgdSites_fk__AgdSites_AgdCity_fk__agdCtyName:
+        description: City
+        type: string
+      agdAdsRubId__agdRubTitle:
+        description: Rubric
+        type: string
+      agdAdsRubId:
+        description: Rubric
+        type: string
+      AgdAds_AgdSites_fk__agdSitTitle:
+        description: Title
+        type: string
+      agdAdsBeginDate:
+        description: Begin date
+        type: string
+        example: yyyy-MM-dd
+      AgdAds_AgdSites_fk__AgdSites_AgdCity_fk:
+        description: Site City
+        type: string
+      agdAdsPrice:
+        description: Price
+        type: number
+      agdAdsRubId__agdRubId:
+        description: Rubric Id
+        type: integer
+      agdAdsId:
+        description: id ad
+        type: integer
+      AgdAds_AgdSites_fk:
+        description: Site
+        type: string
+      AgdAds_AgdSites_fk__AgdSites_AgdCity_fk__agdCtyZipcode:
+        description: Zipcode
+        type: string
+      agdAdsTypetransaction:
+        description: Transaction type
+        type: string
+        enum:
+        - '1'
+        - '2'
+        - '3'
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdAdsStatus:
+        description: Status
+        type: string
+        enum:
+        - BRO
+        - CRE
+        - MOD
+        - VAL
+        - ARC
+      agdAdsTitle:
+        description: Title
+        type: string
+  ArrayOfAgdCLub:
+    type: array
+    items:
+      $ref: '#/definitions/AgdCLub'
+  ArrayOfAgdNews:
+    type: array
+    items:
+      $ref: '#/definitions/AgdNews'
+  AgdPrfTag:
+    type: object
+    properties:
+      agdPrftagPrfId:
+        description: agd prftag prf id
+        type: string
+      agdPrftagTagId__agdTagName:
+        description: agd prftag tag id Area of interest
+        type: string
+      agdPrftagPrfId__usr_login:
+        description: Login
+        type: string
+      agdPrftagTagId:
+        description: agd prftag tag id
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  AgdPrfSit:
+    type: object
+    properties:
+      agdPrfsitSitId:
+        description: agd prfsit sit id
+        type: string
+      agdPrfsitSitId__agdSitTitle:
+        description: agd prfsit sit id Title
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      agdPrfsitPrfId:
+        description: agd prfsit prf id
+        type: string
+      agdPrfsitPrfId__usr_login:
+        description: Login
+        type: string
+  ArrayOfAgdCty:
+    type: array
+    items:
+      $ref: '#/definitions/AgdCty'
+  AgdParamSys:
+    type: object
+    properties:
+      sys_code:
+        description: Code
+        type: string
+      sys_value2:
+        description: Overridden value
+        type: string
+      row_module_id__mdl_name:
+        description: Module name
+        type: string
+      sys_desc:
+        description: Description
+        type: string
+      row_module_id:
+        description: Module
+        type: string
+      sys_type:
+        description: Type
+        type: string
+        enum:
+        - APP
+        - LFL
+        - LOG
+        - EMO
+        - PRV
+      row_id:
+        description: Unique technical row ID
+        type: string
+      sys_value:
+        description: Value
+        type: string
+  AgdSites:
+    type: object
+    properties:
+      AgdSites_AgdCity_fk__agdCtyCityCode:
+        description: City City code
+        type: string
+      agdSitOtherTitle:
+        description: Alternate title
+        type: string
+      agdSitAdress:
+        description: Adress
+        type: string
+      agdSitTitle:
+        description: Title
+        type: string
+      agdSitPhoto:
+        description: Photo
+        type: object
+      AgdSites_AgdCity_fk__agdCtyZipcode:
+        description: City Zipcode
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      AgdSites_AgdCity_fk__agdCtyName:
+        description: City Name
+        type: string
+      AgdSites_AgdCity_fk:
+        description: City
+        type: string
+  ArrayOfAgdPrfSit:
+    type: array
+    items:
+      $ref: '#/definitions/AgdPrfSit'
+swagger: '2.0'
+info:
+  license:
+    name: Simplicite license
+    url: http://www.simplicitesoftware.com
+  contact:
+    name: Simplicite Software
+    url: http://www.simplicitesoftware.com
+    email: contact@simplicitesoftware.com
+  description: API for module Agd
+  title: Agd
+  version: 0.0.1
+tags:
+- name: AgdAds
+  description: Ad
+- name: AgdAdsHistoric
+  description: Historic
+- name: AgdCity
+  description: City
+- name: AgdCLub
+  description: Club
+- name: AgdClubTag
+  description: Agd club tag
+- name: AgdCty
+  description: City
+- name: AgdGoodDeals
+  description: Good deals
+- name: AgdNews
+  description: News
+- name: AgdNewsTag
+  description: Agd news tag
+- name: AgdParamSys
+  description: System parameter
+- name: AgdPrfSit
+  description: Agd prf sit
+- name: AgdPrfTag
+  description: Agd prf tag
+- name: AgdProfil
+  description: Profile
+- name: AgdRubrique
+  description: Rubric
+- name: AgdSites
+  description: Site
+- name: AgdTag
+  description: Area of interest

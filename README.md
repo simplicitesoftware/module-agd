@@ -336,8 +336,8 @@ Petites annonces
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `agdClubtagClubId` link to **`AgdCLub`**                     | id                                       | yes*     | yes       |          | -                                                                                |
-| _Ref. `agdClubtagClubId.agdClubTitle`_                       | _char(150)_                              |          |           |          | -                                                                                |
 | _Ref. `agdClubtagClubId.agdClubId`_                          | _int(11)_                                |          |           |          | -                                                                                |
+| _Ref. `agdClubtagClubId.agdClubTitle`_                       | _char(150)_                              |          |           |          | -                                                                                |
 | `agdClubtagTagId` link to **`AgdTag`**                       | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `agdClubtagTagId.agdTagName`_                          | _char(150)_                              |          |           |          | -                                                                                |
 

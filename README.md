@@ -135,8 +135,8 @@ Profil
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `agdPrfLastLogon`                                            | datetime                                 |          |           |          | -                                                                                |
 | `usr_image_id`                                               | image                                    |          | yes       | yes      | Picture                                                                          |
-| `usr_login`                                                  | regexp(100)                              | yes*     | yes       | yes      | Login                                                                            |
 | `agdPrfValidation`                                           | boolean                                  |          | yes       |          | -                                                                                |
+| `usr_login`                                                  | regexp(100)                              | yes*     | yes       | yes      | Login                                                                            |
 | `usr_first_name`                                             | char(50)                                 |          | yes       | yes      | First name                                                                       |
 | `usr_last_name`                                              | char(50)                                 |          | yes       | yes      | Last name                                                                        |
 | `usr_lang`                                                   | enum(3) using `LANG` list                | yes      | yes       | yes      | Language                                                                         |
@@ -351,8 +351,8 @@ Petites annonces
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `agdNewstagNewsId` link to **`AgdNews`**                     | id                                       | yes*     | yes       |          | -                                                                                |
-| _Ref. `agdNewstagNewsId.agdNewsId`_                          | _int(11)_                                |          |           |          | -                                                                                |
 | _Ref. `agdNewstagNewsId.agdNewsTitle`_                       | _char(150)_                              |          |           |          | -                                                                                |
+| _Ref. `agdNewstagNewsId.agdNewsId`_                          | _int(11)_                                |          |           |          | -                                                                                |
 | `agdNewstagTagId` link to **`AgdTag`**                       | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `agdNewstagTagId.agdTagName`_                          | _char(150)_                              |          |           |          | -                                                                                |
 

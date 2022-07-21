@@ -6,7 +6,7 @@
   "mdl_prefix": "agd",
   "mdl_version": "0.0.1",
   "mdl_type": null,
-  "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": {\n\t\t\"uri\": \"git@github.com:dazoulay-simplicite/module-ag2r-centralperk.git\"\n\t}\n}",
+  "mdl_url": null,
   "mdl_comment": "AGD\n================\n\nPrototype **Annonces-Groupes-Département**."
  },
  "links": [
@@ -287,9 +287,9 @@
        "field": "obo_script_id",
        "mime": "text/plain",
        "name": "AgdAds.java",
-       "id": "7045",
+       "id": "7237",
        "object": "ObjectInternal",
-       "rowid": "2021"
+       "rowid": "2025"
       },
       "obo_usets": "1",
       "obo_nosearch": "1",
@@ -10843,39 +10843,6 @@
         },
         {
          "object": "ObjectFieldSystem",
-         "userkey": "AgdNewsTag~agdNewsId~110",
-         "item": {
-          "obf_object_id__obo_name": "AgdNewsTag",
-          "obf_field_id__fld_name": "agdNewsId",
-          "obf_field_id__fld_type": "1",
-          "obf_order": 110,
-          "obf_group_by": null,
-          "obf_dfault_order": null,
-          "obf_input": null,
-          "obf_ref_field_id__fld_name": "agdNewstagNewsId",
-          "obf_ref_object_id__obo_name": "AgdNews",
-          "obf_cascad": null,
-          "obf_card": null,
-          "obf_visible": null,
-          "obf_ref_export": true,
-          "obf_copy": null,
-          "obf_ref_order": null,
-          "obf_fld_visible": null,
-          "obf_fld_required": null,
-          "obf_fld_updatable": null,
-          "obf_fld_research": null,
-          "obf_fld_more": null,
-          "obf_fld_listmore": null,
-          "obf_fld_researchreq": null,
-          "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[ROWID]",
-          "obf_area_id__ofa_name": null,
-          "obf_area_id__ofa_position": null,
-          "row_module_id__mdl_name": "Agd"
-         }
-        },
-        {
-         "object": "ObjectFieldSystem",
          "userkey": "AgdNewsTag~agdNewsTitle~110",
          "item": {
           "obf_object_id__obo_name": "AgdNewsTag",
@@ -10929,6 +10896,39 @@
            }
           }]
          }]
+        },
+        {
+         "object": "ObjectFieldSystem",
+         "userkey": "AgdNewsTag~agdNewsId~110",
+         "item": {
+          "obf_object_id__obo_name": "AgdNewsTag",
+          "obf_field_id__fld_name": "agdNewsId",
+          "obf_field_id__fld_type": "1",
+          "obf_order": 110,
+          "obf_group_by": null,
+          "obf_dfault_order": null,
+          "obf_input": null,
+          "obf_ref_field_id__fld_name": "agdNewstagNewsId",
+          "obf_ref_object_id__obo_name": "AgdNews",
+          "obf_cascad": null,
+          "obf_card": null,
+          "obf_visible": null,
+          "obf_ref_export": true,
+          "obf_copy": null,
+          "obf_ref_order": null,
+          "obf_fld_visible": null,
+          "obf_fld_required": null,
+          "obf_fld_updatable": null,
+          "obf_fld_research": null,
+          "obf_fld_more": null,
+          "obf_fld_listmore": null,
+          "obf_fld_researchreq": null,
+          "obf_fld_dfault": null,
+          "obf_field_id__fld_dfault": "[ROWID]",
+          "obf_area_id__ofa_name": null,
+          "obf_area_id__ofa_position": null,
+          "row_module_id__mdl_name": "Agd"
+         }
         },
         {
          "object": "ObjectFieldSystem",
@@ -12342,9 +12342,9 @@
        "field": "obo_script_id",
        "mime": "text/plain",
        "name": "AgdProfil.java",
-       "id": "7034",
+       "id": "7238",
        "object": "ObjectInternal",
-       "rowid": "2032"
+       "rowid": "2026"
       },
       "obo_usets": "1",
       "obo_nosearch": "1",
@@ -12605,39 +12605,6 @@
         },
         {
          "object": "ObjectFieldSystem",
-         "userkey": "AgdProfil~usr_login~20",
-         "item": {
-          "obf_object_id__obo_name": "AgdProfil",
-          "obf_field_id__fld_name": "usr_login",
-          "obf_field_id__fld_type": "15",
-          "obf_order": 20,
-          "obf_group_by": null,
-          "obf_dfault_order": 1,
-          "obf_input": null,
-          "obf_ref_field_id__fld_name": null,
-          "obf_ref_object_id__obo_name": null,
-          "obf_cascad": null,
-          "obf_card": null,
-          "obf_visible": null,
-          "obf_ref_export": true,
-          "obf_copy": null,
-          "obf_ref_order": null,
-          "obf_fld_visible": null,
-          "obf_fld_required": null,
-          "obf_fld_updatable": null,
-          "obf_fld_research": null,
-          "obf_fld_more": null,
-          "obf_fld_listmore": null,
-          "obf_fld_researchreq": null,
-          "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": null,
-          "obf_area_id__ofa_name": "AgdProfil-2",
-          "obf_area_id__ofa_position": 2,
-          "row_module_id__mdl_name": "Agd"
-         }
-        },
-        {
-         "object": "ObjectFieldSystem",
          "userkey": "AgdProfil~agdPrfValidation~20",
          "item": {
           "obf_object_id__obo_name": "AgdProfil",
@@ -12755,6 +12722,39 @@
            }]
           }]
          }]
+        },
+        {
+         "object": "ObjectFieldSystem",
+         "userkey": "AgdProfil~usr_login~20",
+         "item": {
+          "obf_object_id__obo_name": "AgdProfil",
+          "obf_field_id__fld_name": "usr_login",
+          "obf_field_id__fld_type": "15",
+          "obf_order": 20,
+          "obf_group_by": null,
+          "obf_dfault_order": 1,
+          "obf_input": null,
+          "obf_ref_field_id__fld_name": null,
+          "obf_ref_object_id__obo_name": null,
+          "obf_cascad": null,
+          "obf_card": null,
+          "obf_visible": null,
+          "obf_ref_export": true,
+          "obf_copy": null,
+          "obf_ref_order": null,
+          "obf_fld_visible": null,
+          "obf_fld_required": null,
+          "obf_fld_updatable": null,
+          "obf_fld_research": null,
+          "obf_fld_more": null,
+          "obf_fld_listmore": null,
+          "obf_fld_researchreq": null,
+          "obf_fld_dfault": null,
+          "obf_field_id__fld_dfault": null,
+          "obf_area_id__ofa_name": "AgdProfil-2",
+          "obf_area_id__ofa_position": 2,
+          "row_module_id__mdl_name": "Agd"
+         }
         },
         {
          "object": "ObjectFieldSystem",
@@ -17241,7 +17241,7 @@
        "field": "thm_css_doc",
        "mime": "text/css",
        "name": "AgdTheme_gen.css",
-       "id": "6944",
+       "id": "7227",
        "object": "Theme",
        "rowid": "7"
       },
@@ -17251,7 +17251,7 @@
        "field": "thm_addon",
        "mime": "text/less",
        "name": "addon.less",
-       "id": "6870",
+       "id": "7228",
        "object": "Theme",
        "rowid": "7"
       },
@@ -17295,7 +17295,7 @@
        "field": "thm_css_doc",
        "mime": "text/css",
        "name": "AgdThemeUser_gen.css",
-       "id": "6945",
+       "id": "7229",
        "object": "Theme",
        "rowid": "8"
       },
@@ -17305,7 +17305,7 @@
        "field": "thm_addon",
        "mime": "text/less",
        "name": "addon.less",
-       "id": "6875",
+       "id": "7230",
        "object": "Theme",
        "rowid": "8"
       },
@@ -18504,6 +18504,43 @@
    }]
   },
   {
+   "object": "Resource",
+   "label": "Resources",
+   "icon": "img/system/resource",
+   "field": "row_module_id",
+   "list": [{
+    "object": "Resource",
+    "userkey": "Disposition(default)~ANY~agd-module-screenshot",
+    "item": {
+     "res_object": {
+      "item": {"dis_code": "default"},
+      "icon": "img/system/disposition",
+      "label": "Disposition",
+      "row_id": "6",
+      "userkeylabel": "default",
+      "object": "Disposition"
+     },
+     "res_type": "IMG",
+     "res_lang": "ANY",
+     "res_code": "agd-module-screenshot",
+     "res_cached": false,
+     "res_file": null,
+     "res_file_compiled": null,
+     "res_image": {
+      "path": "resources/Disposition/default/agd-module-screenshot.svg",
+      "size": 47331,
+      "field": "res_image",
+      "mime": "image/svg+xml",
+      "name": "agd.svg",
+      "id": "7278",
+      "object": "Resource",
+      "rowid": "284"
+     },
+     "row_module_id__mdl_name": "Agd"
+    }
+   }]
+  },
+  {
    "object": "ModelTemplate",
    "label": "Model template",
    "icon": "img/system/model_template",
@@ -18622,11 +18659,11 @@
       "mod_template_id__mtp_name": "ModelBusinessObject",
       "mod_doc": {
        "path": "files/Model/AgdModelObject.svg",
-       "size": 97259,
+       "size": 508,
        "field": "mod_doc",
        "mime": "image/svg+xml",
        "name": "model.svg",
-       "id": "6993",
+       "id": "7236",
        "object": "Model",
        "rowid": "12"
       },
@@ -18637,7 +18674,7 @@
        "field": "mod_image",
        "mime": "image/png",
        "name": "AgdModelObject.png",
-       "id": "6994",
+       "id": "7232",
        "object": "Model",
        "rowid": "12"
       },
@@ -18656,7 +18693,7 @@
        "field": "mod_doc",
        "mime": "image/svg+xml",
        "name": "model.svg",
-       "id": "6883",
+       "id": "7235",
        "object": "Model",
        "rowid": "13"
       },
@@ -18667,7 +18704,7 @@
        "field": "mod_image",
        "mime": "image/png",
        "name": "Test.png",
-       "id": "6882",
+       "id": "7234",
        "object": "Model",
        "rowid": "13"
       },
@@ -18982,10 +19019,10 @@
       "size": 428037,
       "field": "dt_file",
       "mime": "application/zip",
-      "name": "Agd-data-20220721145700.zip",
-      "id": "7145",
+      "name": "Agd-data.zip",
+      "id": "7241",
       "object": "Dataset",
-      "rowid": "6"
+      "rowid": "2"
      },
      "dt_desc": "Created by module's data export on 2022-07-21 14:57:00"
     }
@@ -19008,8 +19045,8 @@
       "size": 980,
       "field": "mdDocFile",
       "mime": "text/x-markdown",
-      "name": "Agd.md",
-      "id": "7167",
+      "name": "AGD_DOC.md",
+      "id": "7239",
       "object": "MDDocument",
       "rowid": "3"
      },

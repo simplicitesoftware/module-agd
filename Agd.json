@@ -18274,6 +18274,58 @@
    ]
   },
   {
+   "object": "ShortCut",
+   "label": "Shortcuts",
+   "icon": "img/system/shortcut",
+   "field": "row_module_id",
+   "list": [{
+    "object": "ShortCut",
+    "userkey": "AgdDoc",
+    "item": {
+     "shc_name": "AgdDoc",
+     "shc_url": "/ext/MDViewer?doc=AGD_DOC",
+     "shc_target": "frame_work",
+     "shc_order": 1,
+     "shc_visible": "1",
+     "shc_icon": "img/color/journal_records",
+     "shc_keys": null,
+     "row_module_id__mdl_name": "Agd"
+    },
+    "links": [{
+     "object": "TranslateShortcut",
+     "label": "Shortcut translation",
+     "icon": "img/system/translation",
+     "field": "tsl_id",
+     "list": [
+      {
+       "object": "TranslateShortcut",
+       "userkey": "S~AgdDoc~ENU",
+       "item": {
+        "tsl_typeShortcut": "S",
+        "tsl_id__shc_name": "AgdDoc",
+        "tsl_lang": "ENU",
+        "tsl_value": "Doc Agd",
+        "tsl_tooltip": null,
+        "row_module_id__mdl_name": "Agd"
+       }
+      },
+      {
+       "object": "TranslateShortcut",
+       "userkey": "S~AgdDoc~FRA",
+       "item": {
+        "tsl_typeShortcut": "S",
+        "tsl_id__shc_name": "AgdDoc",
+        "tsl_lang": "FRA",
+        "tsl_value": "Doc Agd",
+        "tsl_tooltip": null,
+        "row_module_id__mdl_name": "Agd"
+       }
+      }
+     ]
+    }]
+   }]
+  },
+  {
    "object": "ModelTemplate",
    "label": "Model template",
    "icon": "img/system/model_template",

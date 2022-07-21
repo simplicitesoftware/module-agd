@@ -11,10 +11,10 @@
 `Agd` module definition
 =======================
 
-AG2R La Mondiale
+AGD
 ================
 
-Prototype **Central Perk**.
+Prototype **Annonces-Groupes-Département**.
 
 Business models
 ---------------

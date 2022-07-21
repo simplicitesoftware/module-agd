@@ -44,7 +44,7 @@
      "usr_menu": true,
      "usr_menu_defcollapsed": false,
      "usr_menu_defdomain_id__obd_name": null,
-     "usr_last_logon": "2022-07-21 14:55:38",
+     "usr_last_logon": "2022-07-21 14:57:55",
      "usr_dateformat": null,
      "usr_lang_pref": "FRA",
      "usr_mfa_method": null,
@@ -78,6 +78,20 @@
    "list": [
     {
      "object": "UserSysParam",
+     "userkey": "testadmin~DISPOSITION",
+     "item": {
+      "usp_user_id__usr_login": "testadmin",
+      "usp_param_id__sys_code": "DISPOSITION",
+      "usp_value": null,
+      "usp_param_id__sys_type": "LFL",
+      "usp_param_id__sys_value": "default",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
+      "row_module_id__mdl_name": "Agd"
+     }
+    },
+    {
+     "object": "UserSysParam",
      "userkey": "testadmin~FORCE_CHANGE_PASSWORD",
      "item": {
       "usp_user_id__usr_login": "testadmin",
@@ -96,7 +110,7 @@
      "item": {
       "usp_user_id__usr_login": "testadmin",
       "usp_param_id__sys_code": "HISTORY AgdAdmin",
-      "usp_value": "[{\"object\":\"AgdGoodDeals\",\"rowId\":\"1\",\"label\":\"Bons plans : Virée\"},\n{\"object\":\"AgdAds\",\"rowId\":\"1\",\"label\":\"Petite annonce : Voiture 504 Peugeot\"}]",
+      "usp_value": "[{\"object\":\"AgdAds\",\"rowId\":\"1\",\"label\":\"Petite annonce : Voiture 504 Peugeot\"},\n{\"object\":\"AgdGoodDeals\",\"rowId\":\"1\",\"label\":\"Bons plans : Virée\"}]",
       "usp_param_id__sys_type": null,
       "usp_param_id__sys_value": "empty",
       "usp_param_id__sys_value2": null,
@@ -18991,11 +19005,11 @@
      "mdDocTitle": "Agd module documentation",
      "mdDocFile": {
       "path": "docs/MDDocument/AGD_DOC.md",
-      "size": 976,
+      "size": 980,
       "field": "mdDocFile",
       "mime": "text/x-markdown",
       "name": "Agd.md",
-      "id": "7104",
+      "id": "7167",
       "object": "MDDocument",
       "rowid": "3"
      },
@@ -19030,7 +19044,7 @@
      "item": {
       "dsp_disp_id__dis_code": "default",
       "dsp_param_id__sys_code": "WINDOW_TITLE",
-      "dsp_value": "AGR2 Central Perk",
+      "dsp_value": "AGD",
       "dsp_param_id__sys_type": "LFL",
       "dsp_param_id__sys_value": "Simplicité®",
       "dsp_param_id__sys_value2": null,

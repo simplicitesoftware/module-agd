@@ -11,6 +11,48 @@
  },
  "links": [
   {
+   "object": "User",
+   "label": "Users",
+   "icon": "img/system/user",
+   "field": "row_module_id",
+   "list": [{
+    "object": "User",
+    "userkey": "testadmin",
+    "item": {
+     "usr_image_id": null,
+     "usr_login": "testadmin",
+     "usr_timezone": null,
+     "usr_minrows": 20,
+     "usr_maxrows": 50,
+     "usr_title": null,
+     "usr_first_name": null,
+     "usr_last_name": null,
+     "usr_lang": "FRA",
+     "usr_email": null,
+     "usr_work_num": null,
+     "usr_home_num": null,
+     "usr_cell_num": null,
+     "usr_active": "1",
+     "usr_home_id__viw_name": "AgdAdmin",
+     "usr_address1": null,
+     "usr_address2": null,
+     "usr_zipcode": null,
+     "usr_city": null,
+     "usr_state": null,
+     "usr_country": null,
+     "row_module_id__mdl_name": "Agd",
+     "usr_menu": true,
+     "usr_menu_defcollapsed": false,
+     "usr_menu_defdomain_id__obd_name": null,
+     "usr_last_logon": "2022-07-21 14:55:38",
+     "usr_dateformat": null,
+     "usr_lang_pref": "FRA",
+     "usr_mfa_method": null,
+     "usr_mfa_settings": {}
+    }
+   }]
+  },
+  {
    "object": "SystemParam",
    "label": "System parameters",
    "icon": "img/system/system_param",
@@ -27,6 +69,42 @@
      "row_module_id__mdl_name": "Agd"
     }
    }]
+  },
+  {
+   "object": "UserSysParam",
+   "label": "User parameter",
+   "icon": "img/system/system_param",
+   "field": "row_module_id",
+   "list": [
+    {
+     "object": "UserSysParam",
+     "userkey": "testadmin~FORCE_CHANGE_PASSWORD",
+     "item": {
+      "usp_user_id__usr_login": "testadmin",
+      "usp_param_id__sys_code": "FORCE_CHANGE_PASSWORD",
+      "usp_value": "yes",
+      "usp_param_id__sys_type": "PRV",
+      "usp_param_id__sys_value": "empty",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": "Force password change (set at user level)",
+      "row_module_id__mdl_name": "Agd"
+     }
+    },
+    {
+     "object": "UserSysParam",
+     "userkey": "testadmin~HISTORY AgdAdmin",
+     "item": {
+      "usp_user_id__usr_login": "testadmin",
+      "usp_param_id__sys_code": "HISTORY AgdAdmin",
+      "usp_value": "[{\"object\":\"AgdGoodDeals\",\"rowId\":\"1\",\"label\":\"Bons plans : Virée\"},\n{\"object\":\"AgdAds\",\"rowId\":\"1\",\"label\":\"Petite annonce : Voiture 504 Peugeot\"}]",
+      "usp_param_id__sys_type": null,
+      "usp_param_id__sys_value": "empty",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": null,
+      "row_module_id__mdl_name": "Agd"
+     }
+    }
+   ]
   },
   {
    "object": "Group",
@@ -2733,7 +2811,41 @@
           "rch_public": false,
           "rch_request": {"order__agdAdsId": 1},
           "row_module_id__mdl_name": "Agd"
-         }
+         },
+         "links": [{
+          "object": "TranslateResearch",
+          "label": "Search translation",
+          "icon": "img/system/translation",
+          "field": "tsl_id",
+          "list": [
+           {
+            "object": "TranslateResearch",
+            "userkey": "Q~AgdAds~designer~AgdAds~ENU",
+            "item": {
+             "tsl_typeResearch": "Q",
+             "tsl_id__rch_name": "AgdAds",
+             "tsl_id__rch_user_id__usr_login": "designer",
+             "tsl_id__rch_object_id__obo_name": "AgdAds",
+             "tsl_value": "My classified ads",
+             "tsl_lang": "ENU",
+             "row_module_id__mdl_name": "Agd"
+            }
+           },
+           {
+            "object": "TranslateResearch",
+            "userkey": "Q~AgdAds~designer~AgdAds~FRA",
+            "item": {
+             "tsl_typeResearch": "Q",
+             "tsl_id__rch_name": "AgdAds",
+             "tsl_id__rch_user_id__usr_login": "designer",
+             "tsl_id__rch_object_id__obo_name": "AgdAds",
+             "tsl_value": "Mes petites annonces",
+             "tsl_lang": "FRA",
+             "row_module_id__mdl_name": "Agd"
+            }
+           }
+          ]
+         }]
         },
         {
          "object": "Research",
@@ -2760,7 +2872,7 @@
              "tsl_id__rch_name": "AgdAds-All",
              "tsl_id__rch_user_id__usr_login": "designer",
              "tsl_id__rch_object_id__obo_name": "AgdAds",
-             "tsl_value": "Ads",
+             "tsl_value": "All classified ads",
              "tsl_lang": "ENU",
              "row_module_id__mdl_name": "Agd"
             }
@@ -2773,7 +2885,7 @@
              "tsl_id__rch_name": "AgdAds-All",
              "tsl_id__rch_user_id__usr_login": "designer",
              "tsl_id__rch_object_id__obo_name": "AgdAds",
-             "tsl_value": "Petites annonces",
+             "tsl_value": "Toutes les petites annonces",
              "tsl_lang": "FRA",
              "row_module_id__mdl_name": "Agd"
             }
@@ -6893,6 +7005,58 @@
             "grt_function_id__fct_action_id__act_name": null,
             "grt_function_id__fct_function": "CMS",
             "grt_activ": true,
+            "row_module_id__mdl_name": "Agd"
+           }
+          }
+         ]
+        }]
+       }]
+      },
+      {
+       "object": "Research",
+       "label": "Searches",
+       "icon": "img/system/search",
+       "field": "rch_object_id",
+       "list": [{
+        "object": "Research",
+        "userkey": "AgdCLub~designer~Club-All",
+        "item": {
+         "rch_object_id__obo_name": "AgdCLub",
+         "rch_user_id__usr_login": "designer",
+         "rch_name": "Club-All",
+         "rch_public": false,
+         "rch_request": {"order__agdClubId": 1},
+         "row_module_id__mdl_name": "Agd"
+        },
+        "links": [{
+         "object": "TranslateResearch",
+         "label": "Search translation",
+         "icon": "img/system/translation",
+         "field": "tsl_id",
+         "list": [
+          {
+           "object": "TranslateResearch",
+           "userkey": "Q~Club-All~designer~AgdCLub~ENU",
+           "item": {
+            "tsl_typeResearch": "Q",
+            "tsl_id__rch_name": "Club-All",
+            "tsl_id__rch_user_id__usr_login": "designer",
+            "tsl_id__rch_object_id__obo_name": "AgdCLub",
+            "tsl_value": "Clubs",
+            "tsl_lang": "ENU",
+            "row_module_id__mdl_name": "Agd"
+           }
+          },
+          {
+           "object": "TranslateResearch",
+           "userkey": "Q~Club-All~designer~AgdCLub~FRA",
+           "item": {
+            "tsl_typeResearch": "Q",
+            "tsl_id__rch_name": "Club-All",
+            "tsl_id__rch_user_id__usr_login": "designer",
+            "tsl_id__rch_object_id__obo_name": "AgdCLub",
+            "tsl_value": "Clubs",
+            "tsl_lang": "FRA",
             "row_module_id__mdl_name": "Agd"
            }
           }
@@ -17407,9 +17571,9 @@
           "vwi_position": 4,
           "vwi_type": "S",
           "vwi_title": false,
-          "vwi_research_id__rch_name": null,
-          "vwi_research_id__rch_object_id__obo_name": null,
-          "vwi_research_id__rch_user_id__usr_login": null,
+          "vwi_research_id__rch_name": "Club-All",
+          "vwi_research_id__rch_object_id__obo_name": "AgdCLub",
+          "vwi_research_id__rch_user_id__usr_login": "designer",
           "vwi_search_spec": null,
           "vwi_lov_code": null,
           "vwi_show": "AgdClub",
@@ -18804,12 +18968,12 @@
       "size": 428037,
       "field": "dt_file",
       "mime": "application/zip",
-      "name": "Agd-data-20220720181851.zip",
-      "id": "7082",
+      "name": "Agd-data-20220721145700.zip",
+      "id": "7145",
       "object": "Dataset",
-      "rowid": "5"
+      "rowid": "6"
      },
-     "dt_desc": "Created by module's data export on 2022-07-20 18:18:51"
+     "dt_desc": "Created by module's data export on 2022-07-21 14:57:00"
     }
    }]
   },

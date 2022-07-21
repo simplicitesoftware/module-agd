@@ -7,7 +7,7 @@
   "mdl_version": "0.0.1",
   "mdl_type": null,
   "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": {\n\t\t\"uri\": \"git@github.com:dazoulay-simplicite/module-ag2r-centralperk.git\"\n\t}\n}",
-  "mdl_comment": "AG2R La Mondiale\n================\n\nPrototype **Central Perk**."
+  "mdl_comment": "AGD\n================\n\nPrototype **Annonces-Groupes-Département**."
  },
  "links": [
   {
@@ -18758,6 +18758,33 @@
       "rowid": "5"
      },
      "dt_desc": "Created by module's data export on 2022-07-20 18:18:51"
+    }
+   }]
+  },
+  {
+   "object": "MDDocument",
+   "label": "MD document",
+   "icon": "img/system/md_document",
+   "field": "row_module_id",
+   "list": [{
+    "object": "MDDocument",
+    "userkey": "AGD_DOC",
+    "item": {
+     "mdDocCode": "AGD_DOC",
+     "mdDocURL": "/ext/MDViewer?doc=AGD_DOC",
+     "mdDocTitle": "Agd module documentation",
+     "mdDocFile": {
+      "path": "docs/MDDocument/AGD_DOC.md",
+      "size": 976,
+      "field": "mdDocFile",
+      "mime": "text/x-markdown",
+      "name": "Agd.md",
+      "id": "7104",
+      "object": "MDDocument",
+      "rowid": "3"
+     },
+     "mdDocPublished": true,
+     "row_module_id__mdl_name": "Agd"
     }
    }]
   },
